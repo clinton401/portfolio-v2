@@ -4,7 +4,6 @@ import {Divide as Hamburger} from "hamburger-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
-import { createPortal } from "react-dom";
 import {appearAnimation} from "@/lib/framer-motion-utils";
 
 export const links = [
