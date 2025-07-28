@@ -220,7 +220,7 @@ export const Projects: FC = () => {
                 <p className="text-sm pb-4">{project.description}</p>
                 <div className="flex items-center gap-4 flex-wrap">
                   <Links url={project.githubUrl} />
-                  <Links url={project.liveUrl} isGithubLink={true} />
+                  <Links url={project.liveUrl} isGithubLink={false} />
                 </div>
               </motion.div>
               <motion.div
@@ -233,7 +233,7 @@ export const Projects: FC = () => {
                 <img
                   alt={`${project.name} image`}
                   src={project.imgUrl}
-                  className="w-full  max-h-[400px] rounded-md object-cover object-top"
+                  className="w-full md:h-[350px] h-64  rounded-md object-cover object-top"
                 />
               </motion.div>
             </div>
