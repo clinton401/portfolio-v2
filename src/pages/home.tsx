@@ -9,7 +9,7 @@ import {
     // Globe
 } from "lucide-react";
 import { Links } from "@/components/links";
-  import { WorkTable } from "@/components/work-table";
+  import { WorkTimeline } from "@/components/work-table";
   import {Projects} from "@/components/projects";
 import { motion } from "motion/react";
 import {
@@ -276,12 +276,15 @@ const Home: FC = () => {
             <div className="w-[500px] sm:w-[600px] pointer-events-none aspect-square rounded-full border absolute top-[-40%] -right-1/2 sm:right-[-15%]" />
           </div>
         </motion.section>
-        <motion.section  variants={appearAnimation}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}>
+        <motion.section
+          variants={appearAnimation}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="  flex flex-col "
+        >
           <motion.h2
-            className="text-4xl sm:text-6xl w-full text-right font-black font-fira text-white py-4 px-[5%]"
+            className="text-4xl sm:text-6xl w-full px-[5%] text-right font-black font-fira text-white py-4"
             variants={rightAnimation}
             // initial="hidden"
             // whileInView="visible"
@@ -289,21 +292,28 @@ const Home: FC = () => {
           >
             Work
           </motion.h2>
-          <WorkTable />
+          <hr className="pb-4 " />
+          <div className="w-full px-[5%]">
+            <WorkTimeline />
+          </div>
         </motion.section>
         <Projects />
         <section
           className="pt-16 pb-8 px-[5%] flex gap-8 sm:items-center sm:justify-between flex-col-reverse sm:flex-row"
           id="contacts"
         >
-          <motion.div 
-                variants={appearAnimation}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }} className="w-full sm:w-[50%] relative">
+          <motion.div
+            variants={appearAnimation}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="w-full sm:w-[50%] relative"
+          >
             <div className="w-[500px] sm:w-[600px] pointer-events-none aspect-square rounded-full border absolute bottom-0 sm:top-[-50%] -right-1/2 sm:left-[-15%]" />
             <motion.h1
-              variants={leftAnimation} className="font-black font-fira pb-4  text-white text-4xl md:text-6xl lg:text-8xl">
+              variants={leftAnimation}
+              className="font-black font-fira pb-4  text-white text-4xl md:text-6xl lg:text-8xl"
+            >
               Clinton
             </motion.h1>
             <div className="w-full flex gap-2 items-center justify-between">
@@ -313,16 +323,20 @@ const Home: FC = () => {
                 developer
               </p>
               <motion.h1
-              variants={rightAnimation} className="font-black font-fira text-white text-4xl md:text-6xl lg:text-8xl">
+                variants={rightAnimation}
+                className="font-black font-fira text-white text-4xl md:text-6xl lg:text-8xl"
+              >
                 Owoseni
               </motion.h1>
             </div>
           </motion.div>
-          <motion.div className=" w-[80%] sm:w-[40%] " 
-                          variants={appearAnimation}
-                          initial="hidden"
-                          whileInView="visible"
-                          viewport={{ once: true, amount: 0.2 }}>
+          <motion.div
+            className=" w-[80%] sm:w-[40%] "
+            variants={appearAnimation}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <h3 className=" text-white text-sm w-full text-left pb-4 font-bold">
               ... /Contacts ...
             </h3>
@@ -369,7 +383,6 @@ const Home: FC = () => {
             </motion.div>
           ))}
         </motion.div>
-        
       </div>
     );
 }

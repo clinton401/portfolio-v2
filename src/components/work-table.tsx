@@ -1,81 +1,71 @@
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+"use client";
+import { motion } from "motion/react";
 
+const experiences = [
+  {
+    time: "2024 – 2025",
+    company: "Nobox Labs",
+    position: "Full Stack Developer",
+    location: "Remote",
+    tech: ["Next.js", "Node.js", "TailwindCSS", "PostgreSQL", "React Native"],
+  },
+  {
+    time: "2022",
+    company: "Xerax Labs Inc.",
+    position: "Junior Frontend Developer",
+    location: "Remote",
+    tech: ["React", "TypeScript", "Sass"],
+  },
+  {
+    time: "2023",
+    company: "Getlinked Hackathon",
+    position: "Frontend Developer",
+    location: "Hackathon",
+    tech: ["React", "Framer Motion"],
+  },
+];
 
+const timelineVariant = {
+  hidden: { opacity: 0, x: -40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: { delay: i * 0.2, duration: 0.5 },
+  }),
+};
 
-export function WorkTable() {
-    const experiences = [
-      {
-        time: "2024 – 2025",
-        company: "Nobox Labs",
-        position: "Full Stack Developer",
-      },
-      {
-        time: "2022",
-        company: "Xerax Labs Inc.",
-        position: "Junior Frontend Developer",
-      },
-      {
-        time: "2023",
-        company: "Getlinked Hackathon",
-        position: "Frontend Developer",
-      },
-    ];
-    function getExperienceDuration(from = "2022-07-01") {
-      const start = new Date(from);
-      const now = new Date();
-
-      let years = now.getFullYear() - start.getFullYear();
-      let months = now.getMonth() - start.getMonth();
-
-      if (months < 0) {
-        years--;
-        months += 12;
-      }
-
-      return `${years} year${years !== 1 ? "s" : ""}${
-        months > 0 ? ` ${months} month${months !== 1 ? "s" : ""}` : ""
-      }`;
-    }
-      
+export function WorkTimeline() {
   return (
-    <Table className="border-t ">
-      <TableCaption>A list of my work experiences.</TableCaption>
-      <TableHeader className="cursor-pointer ">
-        <TableRow className="">
-          <TableHead className="max-w-[200px]">Year</TableHead>
-          <TableHead className="">Company</TableHead>
-          <TableHead className="">Role</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {experiences.map((experience) => (
-          <TableRow
-            key={experience.company}
-            className="py-6 cursor-pointer "
-          >
-            <TableCell className="font-medium">{experience.time}</TableCell>
-            <TableCell>{experience.company}</TableCell>
-            <TableCell className="">{experience.position}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter className="cursor-pointer">
-        <TableRow>
-          <TableCell colSpan={2}>Work exprerience</TableCell>
-          <TableCell className="text-right">
-            {getExperienceDuration()}
-          </TableCell>
-        </TableRow>
-      </TableFooter>
-    </Table>
+    <div className="relative border-l border-zinc-300 dark:border-zinc-700 pl-6 space-y-10">
+      {experiences.map((exp, i) => (
+        <motion.div
+          key={exp.company}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          custom={i}
+          variants={timelineVariant}
+          className="relative pl-2"
+        >
+          <div className="absolute -left-[10px] top-1.5 w-3 h-3 bg-blue-600 dark:bg-blue-400 rounded-full shadow-md" />
+
+          <div className="text-sm text-zinc-500">{exp.time}</div>
+          <h3 className="text-lg font-bold font-fira text-white">{exp.company}</h3>
+          <p className="text-zinc-600 dark:text-zinc-300">{exp.position}</p>
+          <p className="text-sm text-zinc-500 mt-1">{exp.location}</p>
+
+          <div className="mt-2 flex flex-wrap gap-2">
+            {exp.tech.map((tech) => (
+              <span
+                key={tech}
+                className="bg-zinc-100 dark:bg-zinc-800 text-xs text-zinc-700 dark:text-zinc-200 px-2 py-0.5 rounded"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      ))}
+    </div>
   );
 }
