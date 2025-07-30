@@ -195,7 +195,7 @@ const Home: FC = () => {
               </span>{" "}
               with
               <span className="text-white pl-1 font-semibold italic">
-                {new Date().getFullYear() - 2020}+ years
+                {new Date().getFullYear() - 2022}+ years
               </span>{" "}
               of experience. I build{" "}
               <span className="text-white pl-1 font-semibold italic">
