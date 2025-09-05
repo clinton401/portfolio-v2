@@ -14,24 +14,31 @@ export const links = [
 
 const hamMenuVariant = {
   hidden: {
-    x: "100vw",
-    
-  },
-  visible: {
-    x: 0,
-    transition: {
-      duration: 0.3,
-      ease: "easeIn",
-
-    },
-    exit: {
       x: "100vw",
+      opacity: 0,
+      filter: "blur(20px)",
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+      filter: "blur(0px)",
       transition: {
         duration: 0.3,
         ease: "easeIn",
+         when: "beforeChildren",
       },
-    }
-  }
+    },
+    exit: {
+      x: "100vw",
+      opacity: 0,
+
+      filter: "blur(20px)",
+      transition: {
+        duration: 0.3,
+        ease: "easeIn",
+        when: "beforeChildren",
+      },
+    },
 } as const
 
 const linksVariants = {
@@ -115,7 +122,7 @@ export const Navbar: FC = () => {
               className="fixed top-0 left-0 h-dvh ham-menu  w-full   flex items-center justify-end "
             >
               <div
-                className="w-full fixed top-0 left-0 h-full  z-10 blur-sm backdrop-blur-sm"
+                className="w-full fixed top-0 left-0 h-full  z-10 "
                 onClick={() => setOpen(false)}
               ></div>
               <motion.section className="h-dvh w-[70%] overflow-y-auto    fixed flex z-[30] gap-4 flex-col bg-background items-center  justify-center ">
