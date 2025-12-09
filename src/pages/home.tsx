@@ -1,4 +1,4 @@
-import {type FC, Fragment} from "react";
+import {type FC} from "react";
 import {ArrowRight} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,8 +8,6 @@ import {
     Mail,
     // Globe
 } from "lucide-react";
-import { Links } from "@/components/links";
-  import { WorkTimeline } from "@/components/work-table";
   import {Projects} from "@/components/projects";
 import { motion } from "motion/react";
 import {
@@ -19,8 +17,13 @@ import {
   staggerVariants,
   blurAnimation
 } from "@/lib/framer-motion-utils";
+import { ExperienceTimeline } from "@/components/experience-timeline";
+import type { Experience } from "@/types";
+import { ContactSection } from "@/components/contact-section";
+import { Footer } from "@/layout/footer";
+import { AboutSection } from "@/components/about-section";
   
-  export const socialLinks = [
+   const socialLinks = [
     {
       name: "Twitter",
       icon: Twitter,
@@ -44,38 +47,50 @@ import {
   
   ];
 
-const frontendSkills = [
-  "React",
-  "Next.js",
-  "React Native",
-  "Redux",
-  "JavaScript",
-  "TypeScript",
-  "HTML",
-  "CSS",
-  "Redux Toolkit"
+
+const experiences: Experience[] = [
+  {
+    id: "nobox",
+    company: "Nobox Labs",
+    role: "Full Stack Developer",
+    startDate: "2024",
+    endDate: "2025",
+    location: "Remote",
+    tech: ["Next.js", "Node.js", "PostgreSQL", "React Native"],
+    details: [
+      "Developed and maintained full-stack web and mobile applications",
+      "Collaborated with cross-functional teams to deliver high-quality products",
+      "Implemented responsive designs and optimized application performance",
+    ],
+  },
+  {
+    id: "getlinked",
+    company: "Getlinked Hackathon",
+    role: "Frontend Developer",
+    startDate: "2023",
+    endDate: "2023",
+    location: "Hackathon",
+    tech: ["React", "Framer Motion"],
+    details: [
+      "Built responsive landing page for hackathon event",
+      "Implemented smooth animations and modern UI design",
+    ],
+  },
+  {
+    id: "xerax",
+    company: "Xerax Labs Inc.",
+    role: "Junior Frontend Developer",
+    startDate: "2022",
+    endDate: "2023",
+    location: "Remote",
+    tech: ["React", "TypeScript", "Sass"],
+    details: [
+      "Developed user interfaces for web applications",
+      "Worked with design team to implement pixel-perfect designs",
+    ],
+  },
 ];
 
-const stylingSkills = [
-  "Tailwind CSS",
-  "Shadcn UI",
-  "Material UI",
-  "Radix UI",
-  "Framer Motion",
-  "Sass",
-];
-
-const backendSkills = [
-  "Node.js",
-  "Express.js",
-  "Prisma",
-  "JWT",
-  "Passport.js",
-  "Paystack",
-  "MongoDB",
-  "PostgreSQL",
-  "REST API",
-];
 
 
 const Home: FC = () => {
@@ -171,7 +186,7 @@ const Home: FC = () => {
             </motion.div>
           ))}
         </motion.div>
-        <motion.section
+        {/* <motion.section
           variants={appearAnimation}
           initial="hidden"
           whileInView="visible"
@@ -266,123 +281,17 @@ const Home: FC = () => {
                 </div>
               </div>
             </div>
-            {/* <div className="w-full  flex items-center justify-center">
-              <img
-                src={profile}
-                alt="Clinton Phillips"
-                className=" w-full md:w-1/2 md:min-w-[350px] rounded-xl"
-              />
-              </div> */}
+           
             <div className="w-[500px] sm:w-[600px] pointer-events-none aspect-square rounded-full border absolute top-[-40%] -right-1/2 sm:right-[-15%]" />
           </div>
-        </motion.section>
-        <motion.section
-          variants={appearAnimation}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="  flex flex-col "
-        >
-          <motion.h2
-            className="text-4xl sm:text-6xl w-full px-[5%] text-right font-black font-fira text-white py-4"
-            variants={rightAnimation}
-            // initial="hidden"
-            // whileInView="visible"
-            // viewport={{ once: true, amount: 0.2 }}
-          >
-            Work
-          </motion.h2>
-          <hr className="pb-4 " />
-          <div className="w-full px-[5%]">
-            <WorkTimeline />
-          </div>
-        </motion.section>
+        </motion.section> */}
+
+        <AboutSection />
+        <ExperienceTimeline experiences={experiences} />
+      
         <Projects />
-        <section
-          className="pt-16 pb-8 px-[5%] flex gap-8 sm:items-center sm:justify-between flex-col-reverse sm:flex-row"
-          id="contacts"
-        >
-          <motion.div
-            variants={appearAnimation}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="w-full sm:w-[50%] relative"
-          >
-            <div className="w-[500px] sm:w-[600px] pointer-events-none aspect-square rounded-full border absolute bottom-0 sm:top-[-50%] -right-1/2 sm:left-[-15%]" />
-            <motion.h1
-              variants={leftAnimation}
-              className="font-black font-fira pb-4  text-white text-4xl md:text-6xl lg:text-8xl"
-            >
-              Clinton
-            </motion.h1>
-            <div className="w-full flex gap-2 items-center justify-between">
-              <p>
-                Full-stack
-                <br />
-                developer
-              </p>
-              <motion.h1
-                variants={rightAnimation}
-                className="font-black font-fira text-white text-4xl md:text-6xl lg:text-8xl"
-              >
-                Owoseni
-              </motion.h1>
-            </div>
-          </motion.div>
-          <motion.div
-            className=" w-[80%] sm:w-[40%] "
-            variants={appearAnimation}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <h3 className=" text-white text-sm w-full text-left pb-4 font-bold">
-              ... /Contacts ...
-            </h3>
-            <div className="w-full px-4 py-6 rounded-xl border">
-              <h4 className="text-lg  pb-2">Site</h4>
-              <ul className="text-sm flex flex-col gap-2">
-                <li>Handcrafted by ME /</li>
-                <li>
-                  Designed by{" "}
-                  <a
-                    href="https://www.behance.net/taisia_pro"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-white"
-                  >
-                    Taisa
-                  </a>
-                  /
-                </li>
-                <li>Powered by ReactJS</li>
-              </ul>
-            </div>
-          </motion.div>
-        </section>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerVariants}
-          className="flex w-full flex-wrap gap-4 pb-16 px-[5%] items-center justify-center"
-        >
-          {socialLinks.map(({ name, icon: Icon, url }) => (
-            <motion.div key={name} variants={blurAnimation}>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="gap-2 rounded-full px-4"
-              >
-                <a href={url} target="_blank" rel="noopener noreferrer">
-                  <Icon size={16} />
-                  {name}
-                </a>
-              </Button>
-            </motion.div>
-          ))}
-        </motion.div>
+        <ContactSection socialLinks={socialLinks} />
+        <Footer />
       </div>
     );
 }

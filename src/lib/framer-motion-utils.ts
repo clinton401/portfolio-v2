@@ -242,6 +242,206 @@ const hamMenu :Variants = {
       },
     },
   }
+
+
+  export const fadeInUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.28,
+      ease: 'easeOut',
+    },
+  },
+};
+
+export const fadeInDown: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.28,
+      ease: 'easeOut',
+    },
+  },
+};
+
+export const fadeIn: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.28,
+    },
+  },
+};
+
+export const slideInLeft: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -40,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.28,
+      ease: 'easeOut',
+    },
+  },
+};
+
+export const slideInRight: Variants = {
+  hidden: {
+    opacity: 0,
+    x: 40,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.28,
+      ease: 'easeOut',
+    },
+  },
+};
+
+export const staggerContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.06,
+    },
+  },
+};
+
+export const staggerContainerSlow: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+export const hoverLift: Variants = {
+  rest: {
+    scale: 1,
+    y: 0,
+  },
+  hover: {
+    y: -6,
+    scale: 1.02,
+    transition: {
+      duration: 0.18,
+      ease: 'easeOut',
+    },
+  },
+};
+
+export const hoverScale: Variants = {
+  rest: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.05,
+    transition: {
+      duration: 0.18,
+    },
+  },
+};
+
+export const tapScale: Variants = {
+  tap: {
+    scale: 0.98,
+  },
+};
+
+export const menuSlide: Variants = {
+  closed: {
+    x: '100%',
+    transition: {
+      duration: 0.36,
+      ease: 'easeInOut',
+    },
+  },
+  open: {
+    x: '0%',
+    transition: {
+      duration: 0.36,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+export const backdropFade: Variants = {
+  closed: {
+    opacity: 0,
+  },
+  open: {
+    opacity: 1,
+    transition: {
+      duration: 0.28,
+    },
+  },
+};
+
+export const scaleIn: Variants = {
+  hidden: {
+    scale: 0.9,
+    opacity: 0,
+  },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.28,
+      ease: 'easeOut',
+    },
+  },
+};
+
+export const blurIn: Variants = {
+  hidden: {
+    opacity: 0,
+    filter: 'blur(10px)',
+  },
+  visible: {
+    opacity: 1,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.36,
+    },
+  },
+};
+
+// Timeline specific variant
+export const timelineItem = (index: number): Variants => ({
+  hidden: {
+    opacity: 0,
+    x: -40,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: index * 0.12,
+      duration: 0.28,
+      ease: 'easeOut',
+    },
+  },
+});
+
   export {
     hamMenu,
     appearAnimation,
@@ -258,3 +458,5 @@ const hamMenu :Variants = {
     staggerVariants,
     blurAnimation
   } ;
+
+

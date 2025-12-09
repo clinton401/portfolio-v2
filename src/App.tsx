@@ -6,7 +6,7 @@ import {Route, Routes} from "react-router"
 function App() {
   
   return (
-    <main className="bg-background font-sans flex flex-col  overflow-hidden w-full min-h-dvh pb-8">
+    <main className="bg-background font-sans flex flex-col   overflow-hidden w-full min-h-dvh ">
       <Navbar />
       <Routes>
         

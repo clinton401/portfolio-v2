@@ -9,15 +9,35 @@ import getlinkedImg from "@/assets/getlinked.png";
 // import foodplugImg from "@/assets/foodplug.png";
 // import gestureImg from "@/assets/gesture.png";
 import linktideImg from "@/assets/linktide.png";
+import resumifyImg from "@/assets/resumify.png"
 import brizaImg from "@/assets/briza.png";
 import studyAIImg from "@/assets/studyai.png";
 import { Button } from "@/components/ui/button";
 import { Links } from "@/components/links";
 import { motion } from "motion/react";
-import {blurAnimation, rightAnimation, appearAnimation} from "@/lib/framer-motion-utils";
+import {blurAnimation, appearAnimation} from "@/lib/framer-motion-utils";
+import { SectionHeader } from "./section-header";
 
 export const Projects: FC = () => {
   const projects = [
+    {
+  name: "Resumify",
+  imgUrl: resumifyImg,
+  description:
+    "Resumify is an all-in-one career toolkit built to help users create polished, job-ready documents and prepare for interviews. It includes an AI-powered resume builder and cover letter generator that can turn raw information into clean, professional content. Users can practice with tailored interview questions, take MCQ quizzes, and try virtual and coding challenges that sharpen real-world problem solving. The platform also provides automated resume reviews that highlight weak areas and suggest clear improvements. Everything is designed to make job preparation faster, easier, and more effective.",
+  technologies: [
+    "NextJS",
+    "Better-Auth",
+    "TailwindCSS",
+    "Prisma",
+    "TypeScript",
+    "Gemini AI"
+  ],
+  filters: "NextJS",
+  liveUrl: "https://resumiefy.vercel.app",
+  // githubUrl: "https://github.com/clinton401/resumify"
+},
+
     {
       name: "StudyAI",
       imgUrl: studyAIImg,
@@ -180,16 +200,12 @@ export const Projects: FC = () => {
          className="py-16"
       id="projects"
     >
-      <motion.h2
-        variants={rightAnimation}
-        className="text-4xl sm:text-6xl w-full text-right font-black font-fira text-white pb-4  px-[5%]"
-      >
-        Projects
-      </motion.h2>
+      <SectionHeader text="Projects"/>
+  
       {/* <h3 className=" text-white text-sm w-full text-center pb-4 font-bold" >
               .../Projects...
             </h3> */}
-      <div className="flex flex-col gap-16 px-[5%] border-t pt-6">
+      <div className="flex flex-col gap-16 px-[5%]">
         {projects.map((project) => {
           return (
             <div
@@ -219,7 +235,8 @@ export const Projects: FC = () => {
                 </div>
                 <p className="text-sm pb-4">{project.description}</p>
                 <div className="flex items-center gap-4 flex-wrap">
-                  <Links url={project.githubUrl} />
+                  {project.githubUrl && <Links url={project.githubUrl} />}
+
                   <Links url={project.liveUrl} isGithubLink={false} />
                 </div>
               </motion.div>
