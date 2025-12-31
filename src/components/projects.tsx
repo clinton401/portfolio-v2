@@ -34,7 +34,7 @@ export const Projects: FC = () => {
     "Gemini AI"
   ],
   filters: "NextJS",
-  liveUrl: "https://resumiefy.vercel.app",
+  liveUrl: "https://www.getresumify.com",
   // githubUrl: "https://github.com/clinton401/resumify"
 },
 
